@@ -1,4 +1,4 @@
-package utils
+package linebreak
 
 import (
 	"fmt"
@@ -11,15 +11,15 @@ func TestLineWriter_Write(t *testing.T) {
 	}
 
 	tests := []struct {
-		name    string
-		log  func(line string)
-		args    []byte
-		wantN   int
+		name  string
+		log   func(line string)
+		args  []byte
+		wantN int
 	}{
-		{name:"t1", log:log, args:[]byte("hello, world"), wantN:  len("hello, world")},
-		{name:"t2", log:log, args:[]byte("hello, world\n"), wantN: len("hello, world\n")},
-		{name:"t3", log:log, args:[]byte("hello, world\nhello"), wantN: len("hello, world\nhello")},
-		{name:"t4", log:log, args:[]byte("hello, world\nhello\n"), wantN: len("hello, world\nhello\n")},
+		{name: "t1", log: log, args: []byte("hello, world"), wantN: len("hello, world")},
+		{name: "t2", log: log, args: []byte("hello, world\n"), wantN: len("hello, world\n")},
+		{name: "t3", log: log, args: []byte("hello, world\nhello"), wantN: len("hello, world\nhello")},
+		{name: "t4", log: log, args: []byte("hello, world\nhello\n"), wantN: len("hello, world\nhello\n")},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
